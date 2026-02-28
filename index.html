@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>478 Reset — 4-7-8 Breathing App</title>
+  <meta name="description" content="The 4-7-8 breathing technique for stress, anxiety, and sleep. iPhone and Apple Watch." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #08080e;
+      color: #e8e8f0;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      background: radial-gradient(ellipse at 50% 0%, #1a1a3e 0%, #08080e 70%);
+    }
+
+    .app-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #1e1e40, #12122a);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: clamp(40px, 8vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #9090c0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(18px, 3vw, 22px);
+      color: #7070a0;
+      margin-bottom: 48px;
+      max-width: 420px;
+    }
+
+    .app-store-btn img {
+      height: 54px;
+      opacity: 0.85;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .app-store-btn:hover img { opacity: 1; transform: scale(1.03); }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #555575;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-align: center;
+      margin-bottom: 64px;
+      color: #d8d8f0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #d0d0e8;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #70708a;
+      line-height: 1.6;
+    }
+
+    /* TECHNIQUE */
+    .technique {
+      padding: 80px 24px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .technique-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin: 40px 0;
+    }
+
+    .step {
+      flex: 1;
+      padding: 24px 12px;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .step-number {
+      font-size: 40px;
+      font-weight: 700;
+      color: #7b8ff0;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .step-label {
+      font-size: 12px;
+      color: #555575;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .technique-inner p {
+      font-size: 15px;
+      color: #70708a;
+      line-height: 1.7;
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 100px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .price-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 32px;
+      margin-top: 40px;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .price-note {
+      font-size: 14px;
+      color: #555575;
+      margin-bottom: 28px;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .price-features li {
+      font-size: 15px;
+      color: #8888aa;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-features li::before {
+      content: '✓';
+      color: #7b8ff0;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #383850;
+    }
+
+    footer a { color: #484868; text-decoration: none; }
+    footer a:hover { color: #7b8ff0; }
+
+    a { color: #7b8ff0; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="app-icon">🫁</div>
+    <h1>478 Reset</h1>
+    <p class="hero-sub">The 4-7-8 breathing technique for stress, anxiety, and sleep.</p>
+    <!-- Replace # with your App Store URL once live -->
+    <a class="app-store-btn" href="#">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <p class="section-label">Why 478 Reset</p>
+    <h2 class="section-title">Breathe better. No fuss.</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>iPhone &amp; Apple Watch</h3>
+        <p>Use it on your phone or take it to your wrist. Your progress syncs automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <h3>Heart rate tracking</h3>
+        <p>The Watch app tracks your heart rate in real time so you can see your body calming down.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Privacy first</h3>
+        <p>No account, no data collection. Health data stays on your device — never uploaded anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>No distractions</h3>
+        <p>No notifications, no onboarding, no subscriptions pestering you. Open the app, breathe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNIQUE -->
+  <section class="technique">
+    <div class="technique-inner">
+      <p class="section-label">The technique</p>
+      <h2 class="section-title">4 — 7 — 8</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-label">Inhale</div>
+        </div>
+        <div class="step">
+          <div class="step-number">7</div>
+          <div class="step-label">Hold</div>
+        </div>
+        <div class="step">
+          <div class="step-number">8</div>
+          <div class="step-label">Exhale</div>
+        </div>
+      </div>
+      <p>Developed by Dr. Andrew Weil, the 4-7-8 method acts as a natural tranquiliser for the nervous system. Regular practice helps with stress, anxiety, sleep, and focus.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Pay once. Breathe forever.</h2>
+    <div class="price-card">
+      <div class="price">$2.99</div>
+      <div class="price-note">one-time purchase — no subscription</div>
+      <ul class="price-features">
+        <li>20 sessions free to try</li>
+        <li>Unlimited sessions after unlock</li>
+        <li>iPhone + Apple Watch</li>
+        <li>Heart rate tracking</li>
+        <li>Apple Health integration</li>
+        <li>No ads, ever</li>
+      </ul>
+      <a class="app-store-btn" href="#">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="mailto:478reset@gmail.com">478reset@gmail.com</a>
+      &nbsp;&middot;&nbsp;
+      <a href="/privacypolicy/">Privacy Policy</a>
+      &nbsp;&middot;&nbsp;
+      &copy; 2026 Saadick Dhansay
+    </p>
+  </footer>
+
+</body>
+</html>
